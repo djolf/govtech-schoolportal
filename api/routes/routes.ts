@@ -1,5 +1,6 @@
 import * as express from "express";
 import * as bodyParser from "body-parser";
+import * as cors from "cors";
 import { Logger } from "../logger/logger";
 import { body, header, validationResult } from "express-validator";
 import { isLevel, isValidPhoneNumber, isSubject } from "../validation/validation";
@@ -47,6 +48,7 @@ class Routes {
   private middleware(): void {
     this.express.use(bodyParser.json());
     this.express.use(bodyParser.urlencoded({ extended: false }));
+    this.express.use(cors())
   }
 
   private routes(): void {
@@ -54,7 +56,9 @@ class Routes {
     // request to get all the teachers
     this.express.get("/teachers", (req, res) => {
       this.logger.info("url:::::::" + req.url);
-      res.status(200).json(this.teachers);
+      res.status(200).json({
+        data: this.teachers
+      });
     });
 
     // create teacher
@@ -81,7 +85,9 @@ class Routes {
     // get classes
     this.express.get("/classes", (req, res) => {
       this.logger.info("url:::::::" + req.url);
-      res.status(200).json(this.classes);
+      res.status(200).json({
+        data: this.classes
+      });
     });
     
     // add class

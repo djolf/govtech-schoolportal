@@ -25,9 +25,9 @@ class App {
   }
 
   private routes(): void {
-    this.express.get("/", (req, res) => {
-      res.send("App is running!");
-    });
+    // this.express.get("/", (req, res) => {
+    //   res.send("App is running!");
+    // });
 
     this.express.use('/api', Routes);
 

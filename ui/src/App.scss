@@ -1,0 +1,50 @@
+.App {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.header {
+  display: flex;
+  gap: 1rem;
+  background: white;
+  border-bottom: 1px solid rgba(5, 5, 5, 0.06);
+  user-select: none;
+  width: 100%;
+}
+
+.content {
+  padding: 0 50px;
+  height: 100%;
+  align-self: stretch;
+}
+
+.container {
+  background: white;
+  border-radius: 4px;
+  box-shadow: 0 0 2px 2px rgba(5, 5, 5, 0.06);
+  padding: 3rem;
+  min-height: 80vh;
+  display: flex;
+}
+
+.title-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.empty {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  font-size: 18px;
+  font-weight: 800;
+  gap: 2rem;
+}
+
+.table {
+  width: 100%;
+}
