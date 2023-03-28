@@ -1,7 +1,7 @@
 import * as express from "express";
 import * as bodyParser from "body-parser";
 import { Logger } from "./logger/logger";
-import Routes from './routes/routes';
+import Routes from './controller/controller';
 
 class App {
   public express: express.Application;

@@ -1,11 +1,11 @@
 import { PlusOutlined } from '@ant-design/icons';
 import { Button, Table } from 'antd';
-import { useNavigate, useRouteLoaderData } from 'react-router-dom';
+import { useLoaderData, useNavigate } from 'react-router-dom';
 import { Class } from '../../common/types';
 
 const ClassesPage = () => {
   
-  const { classes } = useRouteLoaderData("app") as { classes: Class[] }; 
+  const { classes } = useLoaderData() as { classes: Class[] }; 
   const navigate = useNavigate();
 
   const columns = [

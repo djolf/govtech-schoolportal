@@ -1,4 +1,5 @@
 export interface Teacher {
+  id: number;
   name: string;
   subject: Subject;
   email: string;
@@ -6,6 +7,7 @@ export interface Teacher {
 }
 
 export interface Class {
+  id: number;
   level: Level;
   name: string;
   formTeacher: {

@@ -1,8 +1,8 @@
 import { CustomValidator } from "express-validator";
 import { Level, Subject } from "../types";
 
-export const isValidPhoneNumber: CustomValidator = (value: string) => {
-  return value.match(/^(6|8|9)\d{7}$/)
+export const isValidPhoneNumber: CustomValidator = (value: number) => {
+  return String(value).match(/^(6|8|9)\d{7}$/)
 }
 
 export const isLevel: CustomValidator = (value: string) => {

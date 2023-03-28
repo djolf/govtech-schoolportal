@@ -1,4 +1,5 @@
 export interface Teacher {
+  id: number;
   name: string;
   subject: Subject;
   email: string;
@@ -6,11 +7,25 @@ export interface Teacher {
 }
 
 export interface Class {
+  id: number;
   level: Level;
   name: string;
   formTeacher: {
     name: string;
   };
+}
+
+export interface ClassReq {
+  level: Level;
+  name: string;
+  teacherEmail: string;
+}
+
+export interface TeacherReq {
+  name: string;
+  subject: Subject;
+  email: string;
+  contactNumber: string;
 }
 
 export enum Level {

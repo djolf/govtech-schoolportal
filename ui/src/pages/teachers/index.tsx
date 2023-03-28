@@ -1,12 +1,11 @@
 import { PlusOutlined } from '@ant-design/icons';
 import { Button, Table } from 'antd';
-import React from 'react';
-import { useNavigate, useRouteLoaderData } from 'react-router-dom';
+import { useLoaderData, useNavigate } from 'react-router-dom';
 import { Teacher } from '../../common/types';
 
 const TeachersPage = () => {
   
-  const { teachers } = useRouteLoaderData("app") as { teachers: Teacher[] }; 
+  const { teachers } = useLoaderData() as { teachers: Teacher[] }; 
   const navigate = useNavigate();
 
   const columns = [

@@ -7,18 +7,15 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { ErrorPage } from './ErrorPage';
 import ClassesPage from './pages/classes';
 import TeachersPage from './pages/teachers';
-import { loader } from './common/loaders';
 import { CreateClassPage } from './pages/classes/create';
 import { CreateTeacherPage } from './pages/teachers/create';
+import { classesLoader, teachersLoader } from './common/loaders';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App/>,
     errorElement: <ErrorPage/>,
-    loader: loader,
-    shouldRevalidate: () => false,
-    id: "app",
     children: [
       {
         errorElement: <ErrorPage/>,
@@ -26,14 +23,17 @@ const router = createBrowserRouter([
           {
             path: "/classes",
             element: <ClassesPage/>,
+            loader: classesLoader,
           },
           {
             path: "/classes/create",
-            element: <CreateClassPage/>
+            element: <CreateClassPage/>,
+            loader: teachersLoader,
           },
           {
             path: "/teachers",
             element: <TeachersPage/>,
+            loader: teachersLoader,
           },
           {
             path: "/teachers/create",
