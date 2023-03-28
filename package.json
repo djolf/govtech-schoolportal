@@ -1,0 +1,19 @@
+{
+  "name": "govtech-schoolportal",
+  "version": "1.0.0",
+  "description": "An education system",
+  "main": "index.js",
+  "scripts": {
+    "start:ui": "cd ui&&npm start",
+    "start:api": "cd api&&npm run start:dev",
+    "start": "concurrently \"npm:start:*\"",
+    "preinstall": "npm i concurrently -D",
+    "install": "concurrently \"cd api && npm install\" \"cd ui && npm install\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^7.6.0"
+  }
+}
