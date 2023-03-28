@@ -31,7 +31,7 @@ const ClassesPage = () => {
     },
   ];
   
-  const dataSource = classes.map( (element: Class, index) => {
+  const dataSource = classes?.map( (element: Class, index) => {
     return {
       key: index + 1,
       level: element.level,
@@ -48,7 +48,7 @@ const ClassesPage = () => {
     <>
       <div className="title-container">
         <h1>Classes</h1>
-        {classes.length && <Button type="primary" icon={<PlusOutlined />} onClick={create}>Add Class</Button>}
+        {classes?.length && <Button type="primary" icon={<PlusOutlined />} onClick={create}>Add Class</Button>}
       </div>
       <div className="container">
       { classes?.length ? (

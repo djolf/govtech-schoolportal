@@ -3,11 +3,18 @@
     "outDir": "./dist/",
     "sourceMap": true,
     "noImplicitAny": true,
-    "module": "commonjs",
-    "target": "es5",
-    "allowJs": true
+    "allowJs": true,
+    "lib": ["ES2022"], // ES2020 in earlier versions
+    "module": "ES2022", //ESNext 
+    "moduleResolution": "Node",
+    "target": "ES2022", // ES2020 in earlier versions
+    "esModuleInterop": true,
   },
   "exclude":[
     "node_modules"
-  ]
+  ],
+  "ts-node": {
+    "esm": true,
+    "experimentalSpecifierResolution": "node"
+  }
 }

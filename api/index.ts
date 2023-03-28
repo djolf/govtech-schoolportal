@@ -1,5 +1,5 @@
 import App from './app';
-import * as http from 'http';
+import http from 'http';
 import { Logger } from './logger/logger';
 
 const port = 3070;
@@ -15,4 +15,4 @@ server.on('listening', () => {
   logger.info(`Listening on ${bind}`);
 });
 
-module.exports = App;
+export default App;
