@@ -1,6 +1,15 @@
 # govtech-schoolportal
 An education system
 
+## Prerequesites
+You must have postgresql set up to run on local. use `init.sql` to set up the db, then create a `.env` file in the `api` folder with your db credentials, for example
+```
+DB_HOST="localhost" 
+DB_PORT=5432
+DB_USER="admin" 
+DB_PASSWORD="password"
+DB_NAME="gtschool"
+```
 ## Getting started
 Clone the repo, then run:
 ```
