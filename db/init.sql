@@ -1,55 +1,40 @@
--- Database: gtschool
+-- Drop existing database if needed
+DROP DATABASE IF EXISTS gtschool;
 
--- DROP DATABASE IF EXISTS gtschool;
-
+-- Create new database with correct collation settings
 CREATE DATABASE gtschool
     WITH
-    OWNER = admin
+    OWNER = postgres
     ENCODING = 'UTF8'
-    LC_COLLATE = 'English_United States.936'
-    LC_CTYPE = 'English_United States.936'
+    LC_COLLATE = 'en_US.UTF-8'
+    LC_CTYPE = 'en_US.UTF-8'
+    TEMPLATE template0
     TABLESPACE = pg_default
-    CONNECTION LIMIT = -1
-    IS_TEMPLATE = False;
+    CONNECTION LIMIT = -1;
 
--- Table: public.teachers
+-- Switch to the new database
+\c gtschool
 
--- DROP TABLE IF EXISTS public.teachers;
+-- Drop and create teachers table
+DROP TABLE IF EXISTS public.teachers CASCADE;
+CREATE TABLE public.teachers (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(30) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    subject VARCHAR(30) NOT NULL,
+    contact VARCHAR(8) NOT NULL
+) TABLESPACE pg_default;
+ALTER TABLE public.teachers OWNER TO postgres;
 
-CREATE TABLE IF NOT EXISTS public.teachers
-(
-    id integer NOT NULL DEFAULT 'nextval('teachers_id_seq'::regclass)',
-    name character varying(30) COLLATE pg_catalog."default" NOT NULL,
-    email character varying(255) COLLATE pg_catalog."default" NOT NULL,
-    subject character varying(30) COLLATE pg_catalog."default" NOT NULL,
-    contact character varying(8) COLLATE pg_catalog."default" NOT NULL,
-    CONSTRAINT teachers_pkey PRIMARY KEY (id)
-)
-
-TABLESPACE pg_default;
-
-ALTER TABLE IF EXISTS public.teachers
-    OWNER to postgres;
-
--- Table: public.classes
-
--- DROP TABLE IF EXISTS public.classes;
-
-CREATE TABLE IF NOT EXISTS public.classes
-(
-    id integer NOT NULL DEFAULT 'nextval('classes_id_seq'::regclass)',
-    name character varying(30) COLLATE pg_catalog."default" NOT NULL,
-    level character varying(30) COLLATE pg_catalog."default" NOT NULL,
-    formteacher integer NOT NULL,
-    CONSTRAINT classes_pkey PRIMARY KEY (id),
+-- Drop and create classes table
+DROP TABLE IF EXISTS public.classes CASCADE;
+CREATE TABLE public.classes (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(30) NOT NULL,
+    level VARCHAR(30) NOT NULL,
+    formteacher INTEGER NOT NULL,
     CONSTRAINT classes_form_teacher_fkey FOREIGN KEY (formteacher)
-        REFERENCES public.teachers (id) MATCH SIMPLE
-        ON UPDATE NO ACTION
-        ON DELETE NO ACTION
-        NOT VALID
-)
-
-TABLESPACE pg_default;
-
-ALTER TABLE IF EXISTS public.classes
-    OWNER to postgres;
+        REFERENCES public.teachers (id)
+        ON DELETE CASCADE
+) TABLESPACE pg_default;
+ALTER TABLE public.classes OWNER TO postgres;
